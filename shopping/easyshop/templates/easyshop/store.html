@@ -1,0 +1,47 @@
+
+{% extends 'easyshop/main.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <div class="row align-center">
+		{% for obj in products %}
+		<div class="col-md-4 pt-3">
+                
+			<div class="card text-center p-2" >
+				<img src="{{ obj.document.url }}"  class="card-img-top rounded float-right pl-4 " alt="..." class="text-info" style="height: 10em; width: 15em; ">
+				<div class="card-body">
+					<h6><strong>{{ obj.pname }}</strong></h6>
+					<hr>
+				
+					
+
+					<a  class="btn btn-outline-warning add-btn" href="{% url 'addtocart' obj.id %}">Add to Cart</a>
+				
+			
+					
+	
+					<a class="btn btn-outline-success" href="{% url 'show' obj.id %}">
+						<i class="fa fa-shopping-cart"></i>
+						View</a>
+									  
+				</div>
+				<h4 style="display: inline-block; float: right"><strong>${{ obj.prod_price }}</strong></h4>
+
+			  </div>
+		
+
+	   
+
+
+	</div>
+        {% endfor %}
+				
+	</div>
+
+
+
+
+{% endblock content %}
+
+
+

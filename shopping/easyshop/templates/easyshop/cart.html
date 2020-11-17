@@ -1,0 +1,82 @@
+{% extends 'easyshop/main.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="box-element">
+
+			<a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Continue Shopping</a>
+
+			<br>
+			<br>
+			<table class="table">
+				<tr>
+					<th><h5>Total: <strong>{{itemcount}} </strong>products</h5></th>
+					<th><h5>Total:<strong> ${{products.get_total_cost}}</strong></h5></th>
+					<th>
+						<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+					</th>
+				</tr>
+			</table>
+
+		</div>
+
+		<br>
+		<div class="box-element ">
+			<div class="cart-row">
+				<div style="flex:2"><strong>Product</strong></div>
+				<div style="flex:2"><strong>Item</strong></div>
+				<div style="flex:2"><strong>Price</strong></div>
+				<div style="flex:2"><strong>Quantity</strong></div>
+				<div style="flex:2"><strong>Total</strong></div>
+				<div style="flex:2"><strong>Remove</strong></div>
+			</div>
+{% for prod in products.items.all %}
+{% with product=prod.product %}
+
+			<div class="cart-row ">
+				<div style="flex:2"><img class="row-image" src="{{ product.document.url }}"></div>
+				
+					<div style="flex:2"><p class="pt-3">{{product.pname}}</p></div>
+					<div style="flex:2"><p class="pt-3">${{product.prod_price}}</p></div>
+					<div style="flex:2">
+						<!-- <p class="quantity pt-3">{{prod.quantity}}</p> -->
+						<div class="quantity" style="flex:2">
+							
+							<form action="{% url 'cart_add_q' product.id  %}" style="width: 6em; height: 2em;" class="pt-2">
+								<input style="flex:2" type="number" name="q" value="{{ prod.quantity }}" class="form-control text-center btn btn-sm btn-warning"  onchange="this.form.submit()">	
+								
+								{% csrf_token %}
+									
+								</form>
+
+
+
+
+
+					
+							</div>
+					</div>
+					
+					<div style="flex:2">
+						<p class="pt-3">${{prod.subtotal}}</p>
+					</div>
+					<div style="flex:2">
+					   
+						<a style="flex:2" class="btn btn-sm btn-danger mt-3" href="{% url 'removeitem' prod.product.id %}">Remove</a>
+						
+		
+					</div>
+				
+				
+				
+
+			</div>
+			{% endwith %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

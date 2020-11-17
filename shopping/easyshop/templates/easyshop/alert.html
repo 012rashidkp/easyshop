@@ -1,0 +1,33 @@
+{% extends 'easyshop/main.html' %}
+{% block content %}
+<script>
+    alert("Your cart is empty");
+    </script>
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+
+<h1 style="margin-top: 175px; margin-left: 270px;" id="cartempty">your Cart is Empty</h1>
+
+        </div>
+
+    </div>
+
+<div class="row">
+<a style="margin-top: 10px; margin-left: 350px;" class="btn btn-danger " href="{% url 'store' %}">Lets Go to Store
+</a>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

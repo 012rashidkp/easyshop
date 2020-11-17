@@ -1,0 +1,48 @@
+{% extends 'easyshop/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    <h5 id="maintain">Maintain Products</h5>
+    <div class="card card-body">
+
+        <table class="table table-md">
+            <tr>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+               {% for datas in products %}
+                <tr>
+                    <td>{{datas.pname}}</td>
+                    <td>{{datas.pstock}}</td>
+                    <td>{{datas.pdesc}}</td>
+                    <td id="price">${{datas.prod_price}}</td>
+                    <td>{{datas.document}}</td>
+                        
+                    <td>{{datas.date_created}}</td>
+                
+                    <td><a class="btn btn-sm btn-success" href="{% url 'update_order' datas.id %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' datas.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+
+
+
+
+</div>
+
+
+</div>
+
+</div>
+{% endblock content %}

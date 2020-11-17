@@ -1,0 +1,31 @@
+{%  extends 'easyshop/AdminBase.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			
+			<p class="dialog">Are you sure you want to logout {{request.user}}?</p>	
+			<div class="col-sm-6">
+				<a class="btn btn-warning" href="{% url 'dashboard' %}">Cancel</a>
+
+				
+				<a class="btn btn-danger ml-5" href="{% url 'logout' %}">Confirm</a>
+
+			</div>	
+
+				
+				
+
+
+			
+			
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{%  extends 'easyshop/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<br>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card card-body">
+
+
+			<p class="dialog">Are you sure you want to delete "{{item}}"?</p>
+			<img src="{{item.document.url}}" style="height: 10em; width: 10em;">
+			<form action="{% url 'delete_order' item.id  %}" method="POST" class="pt-3">
+
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'maintain' %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

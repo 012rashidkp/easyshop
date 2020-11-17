@@ -1,0 +1,30 @@
+{% extends 'easyshop/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="row ">
+	<div class="col-md-6 ">
+		<div class="card card-body">
+
+
+			<p class="dialog">You have successfully added "{{item}}" to the cart</p>
+			<div class="row">
+
+			
+			<div class="col-md-6">
+				<a class="btn btn-warning " href="{% url 'cart' %}">Visit cart</a>
+			</div>
+			<div class="col-md-6">
+
+				<a class="btn btn-danger " href="{% url 'store' %}">Continue shopping</a>
+			</div>
+		</div>
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}

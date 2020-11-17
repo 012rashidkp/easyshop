@@ -1,0 +1,40 @@
+{% extends 'easyshop/main.html' %}
+{% load static %}
+{% block content %}
+<a  class="btn btn-outline-warning mt-5" href="{% url 'store' %}">&#x2190; Continue to store</a>
+
+<br>
+  
+
+<div class="container">
+    <div class="row align-center">
+        <div class="col-md-12">
+            <div class="col-md-6 pt-3">
+                
+                <div class="card text-center p-2 " >
+                    <img src="{{ item.document.url }}"  class="card-img-top rounded float-right pl-4 " alt="..." class="text-info" style="height: 10em; width: 15em; ">
+                    <div class="card-body" style="width: 15em;">
+                        <h6><strong>{{item}}</strong></h6>
+                        <hr>
+    
+                        <h4 style="display: inline-block; float: right"><strong>${{ item.prod_price }}</strong></h4>
+                        <br>
+                        <h6>{{ item.pdesc }}</h6>
+                        <br>
+                        <h6>total stock: {{ item.pstock }}</h6>
+                      
+                    </div>
+                  </div>
+            
+    
+           
+    
+    
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}
